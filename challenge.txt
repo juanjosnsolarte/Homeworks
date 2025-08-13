@@ -1,0 +1,39 @@
+En JavaScript, las funciones regulares crean su propio contexto de ejecución, 
+lo que significa que tienen su propio this y arguments, y pueden usarse como 
+constructores con new. En cambio, las funciones de flecha tienen una sintaxis 
+más corta, no crean su propio this ni arguments, sino que los heredan del 
+contexto en el que fueron definidas, y no pueden ser usadas como constructores. 
+Por eso, las funciones regulares son más adecuadas para métodos de objetos o 
+constructores, mientras que las funciones de flecha son ideales para callbacks y 
+funciones pequeñas donde se quiere mantener el this del contexto exterior.
+
+Función en Tipos regulares y de flecha, que debería recibir un número y se 
+imprimirá en consola si ese número es ya sea par o impar:
+
+Regular:
+
+function comprobarParImparRegular(num) {
+  if (num % 2 === 0) {
+    console.log(num + ' es par');
+  } else {
+    console.log(num + ' es impar');
+  }
+}
+
+// Ejemplo de uso
+comprobarParImparRegular(8);  // '8 es par'
+comprobarParImparRegular(15);  // '15 es impar'
+
+Flecha:
+
+const comprobarParImparFlecha = num => {
+  if (num % 2 === 0) {
+    console.log(num + ' es par');
+  } else {
+    console.log(num + ' es impar');
+  }
+};
+
+// Ejemplo de uso
+comprobarParImparFlecha(2); // '2 es par'
+comprobarParImparFlecha(21); // '21 es impar'
