@@ -1,0 +1,140 @@
+// Array base para ejemplos
+let numeros = [1, 2, 3, 4, 5];
+let letras = ["a", "b", "c"];
+let mixto = [1, "dos", 3, "cuatro"];
+
+// 1. at(index)
+console.log(numeros.at(2)); // 3
+
+// 2. concat(...arrays)
+console.log(numeros.concat(letras)); // [1,2,3,4,5,"a","b","c"]
+
+// 3. copyWithin(target, start, end)
+let arrCopy = [1, 2, 3, 4, 5];
+console.log(arrCopy.copyWithin(0, 3)); // [4,5,3,4,5]
+
+// 4. entries()
+
+opcion 1:
+
+for (let [index, value] of numeros.entries()) {
+  console.log(index, value);
+}
+
+opcion 2:
+
+const array1 = ["a", "b", "c"];
+
+const iterator1 = array1.entries();
+
+console.log(iterator1.next().value);
+// Expected output: Array [0, "a"]
+
+// 5. every(callback)
+console.log(numeros.every(n => n > 0)); // true
+
+// 6. fill(value, start, end)
+let arrFill = [1, 2, 3];
+console.log(arrFill.fill(0, 1)); // [1,0,0]
+
+// 7. filter(callback)
+console.log(numeros.filter(n => n >= 3)); // [4,5]
+
+// 8. find(callback)
+console.log(numeros.find(n => n > 3)); // 4
+
+// 9. findIndex(callback)
+console.log(numeros.findIndex(n => n > 3)); // 3
+
+// 10. findLast(callback)
+console.log(numeros.findLast(n => n < 4)); // 3
+
+// 11. findLastIndex(callback)
+console.log(numeros.findLastIndex(n => n < 4)); // 2
+
+// 12. flat(depth)
+let ejemplo = [5, [6, [7]]];
+console.log(ejemplo.flat(2)); // [5,6,7]
+
+// 13. flatMap(callback)
+console.log(numeros.flatMap(n => [n, n * 2])); // [1,2,2,4,3,6,4,8,5,10]
+
+// 14. forEach(callback)
+numeros.forEach(n => console.log(n * 2)); // 2,4,6,8,10
+
+// 15. includes(value)
+console.log(numeros.includes(3)); // true
+
+// 16. indexOf(value)
+console.log(numeros.indexOf(3)); // 2
+
+// 17. join(separator)
+console.log(letras.join("-")); // "a-b-c"
+
+// 18. keys()
+for (let key of numeros.keys()) {
+  console.log(key); // 0,1,2,3,4
+}
+
+// 19. lastIndexOf(value)
+let arrRepeat = [4, 5, 6, 5];
+console.log(arrRepeat.lastIndexOf(4)); // 0
+
+// 20. map(callback)
+console.log(numeros.map(n => n * 10)); // [10,20,30,40,50]
+
+// 21. pop()
+let arrPop = [1,2,3,4,5];
+arrPop.pop();
+console.log(arrPop); // [1,2,3,4]
+
+// 22. push(...items)
+let arrPush = [1,2,3,4,5];
+arrPush.push(6);
+console.log(arrPush); // [1,2,3,4,5,6]
+
+// 23. reduce(callback)
+console.log(numeros.reduce((acc, n) => acc * n, 1)); // 120
+
+// 24. reduceRight()
+console.log(numeros.reduceRight((acc, n) => acc - n)); // -5
+
+// 25. reverse()
+let arrReverse = [1,2,3,,4,5];
+console.log(arrReverse.reverse()); // [5,4,3,2,1]
+
+// 26. shift()
+let arrShift = [1,2,3,4,5];
+arrShift.shift();
+console.log(arrShift); // [2,3,4,5]
+
+// 27. slice(start, end)
+console.log(numeros.slice(1, 3)); // [2,3]
+
+// 28. some(callback)
+console.log(numeros.some(n => n > 4)); // true
+
+// 29. sort(compareFunction)
+let desordenado = [3, 1, 4, 2];
+console.log(desordenado.sort((a, b) => a - b)); // [1,2,3,4]
+
+// 30. splice(start, deleteCount, ...items)
+let arrSplice = [1,2,3,4,5];
+arrSplice.splice(2, 1, 99);
+console.log(arrSplice); // [1,2,99,4,5]
+
+// 31. toLocaleString()
+console.log([1000, 2000].toLocaleString("de-DE")); // "1.000,2.000"
+
+// 32. toString()
+console.log(numeros.toString()); // "1,2,3,4,5"
+
+// 33. unshift(...items)
+let arrUnshift = [1,2,3,4,5];
+arrUnshift.unshift(0);
+console.log(arrUnshift); // [0,1,2,3,4,5]
+
+// 34. values()
+for (let val of numeros.values()) {
+  console.log(val); // 1,2,3,4,5
+}
