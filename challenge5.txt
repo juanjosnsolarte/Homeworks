@@ -1,22 +1,3 @@
-Son.js:
-
-import React from "react";
-
-// Solo se re-renderiza si cambian sus props (numero o increment)
-const Son = React.memo(function Son({ numero, increment }) {
-  console.log("Render <Son /> =>", numero);
-  return (
-    <button
-      className="btn btn-primary mr-3"
-      onClick={() => increment(numero)}
-    >
-      {numero}
-    </button>
-  );
-});
-
-export default Son;
-
 Father.js:
 
 import React, { useCallback, useMemo, useState } from "react";
@@ -47,6 +28,25 @@ export default function Father() {
     </section>
   );
 }
+
+Son.js:
+
+import React from "react";
+
+// Solo se re-renderiza si cambian sus props (numero o increment)
+const Son = React.memo(function Son({ numero, increment }) {
+  console.log("Render <Son /> =>", numero);
+  return (
+    <button
+      className="btn btn-primary mr-3"
+      onClick={() => increment(numero)}
+    >
+      {numero}
+    </button>
+  );
+});
+
+export default Son;
 
 index.js:
 
