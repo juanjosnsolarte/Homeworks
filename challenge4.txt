@@ -1,0 +1,100 @@
+ComponentApp.js:
+
+import { useState } from "react";
+import AddCategory from "./AddCategory.js";
+import CategoryList from "./CategoryList.js";
+
+export default function ComponentApp() {
+  // 5) Lista de categorías en el Parent
+  const [categories, setCategories] = useState([]);
+
+  // Recibe la categoría desde el Child y la añade a la lista
+  const handleAddCategory = (newCategory) => {
+    setCategories((prev) => [...prev, newCategory]);
+  };
+
+  return (
+    <section style={{ fontFamily: "system-ui", padding: 16, maxWidth: 520 }}>
+      <h1>Challenge 04 – Categorías</h1>
+
+      {/* 7) División Parent/Child */}
+      <AddCategory onAddCategory={handleAddCategory} />
+
+      <hr style={{ margin: "16px 0" }} />
+      <CategoryList categories={categories} />
+    </section>
+  );
+}
+
+AddCategory.js:
+
+import { useState } from "react";
+import PropTypes from "prop-types";
+
+export default function AddCategory({ onAddCategory }) {
+  // 2) useState para manejar el valor del input
+  const [category, setCategory] = useState("");
+
+  // 1–3) Input controlado + onChange con event.target.value
+  const onInputChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  // 4–6) Botón que agrega la categoría y limpia el input con setCategory("")
+  const onClickAdd = () => {
+    const value = category.trim();
+    if (!value) return;             // evita vacíos
+    onAddCategory(value);           // envía al Parent
+    setCategory("");                // 6) limpiar input
+  };
+
+  return (
+    <div style={{ display: "flex", gap: 8 }}>
+      <input
+        type="text"
+        placeholder="Nueva categoría..."
+        value={category}
+        onChange={onInputChange}
+      />
+      <button onClick={onClickAdd}>Add</button>
+    </div>
+  );
+}
+
+AddCategory.propTypes = {
+  onAddCategory: PropTypes.func.isRequired,
+};
+
+CategoryList.js:
+
+import PropTypes from "prop-types";
+
+export default function CategoryList({ categories }) {
+  if (categories.length === 0) {
+    return <p style={{ color: "#666" }}>Aún no hay categorías.</p>;
+  }
+
+  return (
+    <ul style={{ paddingLeft: 18 }}>
+      {categories.map((cat, idx) => (
+        <li key={`${cat}-${idx}`}>{cat}</li>
+      ))}
+    </ul>
+  );
+}
+
+CategoryList.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+index.js:
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import ComponentApp from "./ComponentApp.js";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <ComponentApp />
+  </React.StrictMode>
+);
