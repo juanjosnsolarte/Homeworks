@@ -1,0 +1,61 @@
+Son.js:
+
+import React from "react";
+
+// Solo se re-renderiza si cambian sus props (numero o increment)
+const Son = React.memo(function Son({ numero, increment }) {
+  console.log("Render <Son /> =>", numero);
+  return (
+    <button
+      className="btn btn-primary mr-3"
+      onClick={() => increment(numero)}
+    >
+      {numero}
+    </button>
+  );
+});
+
+export default Son;
+
+Father.js:
+
+import React, { useCallback, useMemo, useState } from "react";
+import Son from "./Son";
+
+export default function Father() {
+  // lista estable (opcional), solo se crea una vez
+  const list = useMemo(() => [2, 4, 6, 8, 10], []);
+
+  const [valor, setValor] = useState(0);
+  const [numero, setNumero] = useState(null); // último n presionado
+
+  // callback memorizado para que no cambie su referencia en cada render
+  const increment = useCallback((num) => {
+    setValor((v) => v + num); // actualización funcional: sin dependencia de 'valor'
+    setNumero(num);           // mostrar 'n' que se pulsó
+  }, []);
+
+  return (
+    <section style={{ fontFamily: "system-ui", padding: 16 }}>
+      <h1>Father</h1>
+      <p>Total: {valor}</p>
+      <p>numero (n pulsado): {numero ?? "-"}</p>
+      <hr />
+      {list.map((n) => (
+        <Son key={n} numero={n} increment={increment} />
+      ))}
+    </section>
+  );
+}
+
+index.js:
+
+import React from "react";
+import ReactDOM from "react-dom/client";
+import Father from "./Father.js";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <Father />
+  </React.StrictMode>
+);
