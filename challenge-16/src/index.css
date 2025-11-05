@@ -1,0 +1,103 @@
+/* ====== Variables y base ====== */
+:root {
+  /* Paleta */
+  --bg: #0b0f14;
+  --bg-elev: #111725;
+  --bg-elev-2: #0f1420;
+  --border: #1f2635;
+  --text: #e8ecf1;
+  --muted: #9fb0c0;
+  --accent: #7aa2ff;
+  --accent-2: #ffb86c;
+  --ok: #2ca02c;
+  --city: #1f77b4;
+
+  /* Dimensiones */
+  --radius: 14px;
+  --radius-sm: 10px;
+  --gap: 16px;
+  --shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tipografía */
+h1, h2, h3 { margin: 0 0 8px; line-height: 1.15; }
+p { margin: 0 0 10px; color: var(--muted); }
+code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Enlaces */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Inputs */
+label { font-size: .95rem; color: var(--muted); }
+select, input, button {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev-2);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+}
+select:focus, input:focus { border-color: var(--accent); }
+
+/* Panel/targeta */
+.panel {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Fila controles */
+.row { display: flex; align-items: center; gap: 12px; margin: 8px 0 12px; }
+
+/* Listas */
+.list { list-style: none; padding: 0; margin: 10px 0 0; }
+.list li {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.list li:last-child { border-bottom: 0; }
+
+/* Footer */
+footer { margin-top: 12px; color: var(--muted); }
+
+/* Scrollbar bonito (WebKit/Chromium) */
+*::-webkit-scrollbar { height: 10px; width: 10px; }
+*::-webkit-scrollbar-track { background: #0a0d13; }
+*::-webkit-scrollbar-thumb { background: #233048; border-radius: 999px; }
+*::-webkit-scrollbar-thumb:hover { background: #2b3a56; }
+
+/* Utilidades */
+.muted { color: var(--muted); }
+.badge {
+  font-size: .8rem; padding: .25rem .5rem; border-radius: 999px;
+  border: 1px solid var(--border); background: #0f1626; color: var(--muted);
+}

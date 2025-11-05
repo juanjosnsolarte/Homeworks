@@ -1,0 +1,60 @@
+/* ====== Header ====== */
+header.page {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+header.page h1 {
+  font-size: 1.7rem;
+  letter-spacing: .2px;
+}
+.subtitle { color: var(--muted); }
+
+/* ====== Gráfico 3D ====== */
+/* Si en Graph3D.jsx cambias el style inline por className="graphWrap" */
+.graphWrap {
+  height: 70vh;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: radial-gradient(1200px 400px at 30% -10%, rgba(122,162,255,.08), transparent),
+              radial-gradient(1000px 300px at 80% 120%, rgba(255,184,108,.06), transparent),
+              var(--bg-elev-2);
+  box-shadow: var(--shadow);
+}
+
+/* ====== Panel de “Habitantes por ciudad” ====== */
+.panel h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.panel .row label { min-width: 60px; }
+
+/* Tarjetas de persona (opcional: se activan si aplicas className "person") */
+.person {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  border-radius: 10px;
+}
+.person b { font-weight: 600; }
+.person .age { color: var(--muted); font-size: .95rem; }
+
+/* ====== Legend/ayudas ====== */
+.legend {
+  display: inline-flex;
+  gap: 12px; align-items: center;
+  font-size: .9rem; color: var(--muted);
+}
+.legend .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.legend .dot.city { background: var(--city); }
+.legend .dot.person { background: var(--ok); }
+.legend .line { width: 30px; height: 3px; background: var(--accent-2); border-radius: 2px; }
+
+/* ====== Responsive ====== */
+@media (max-width: 860px) {
+  .container { padding: 16px; }
+  header.page { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .graphWrap { height: 62vh; }
+}
+@media (max-width: 520px) {
+  .graphWrap { height: 55vh; }
+}
