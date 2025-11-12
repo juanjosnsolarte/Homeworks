@@ -1,0 +1,8 @@
+@use '../../styles/mixins';
+@use '../../styles/functions';
+
+.pageContainer {
+  @include mixins.card(functions.rem(28));
+  width: min(100%, functions.rem(520));
+  margin: functions.rem(32) auto functions.rem(40);
+}

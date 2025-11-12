@@ -1,0 +1,29 @@
+@use 'variables';
+@use 'functions';
+@use 'mixins';
+@use 'placeholders';
+@use 'themes';
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  font-family: variables.$font-stack;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+// Utilidad pequeña con operaciones matemáticas
+.container {
+  max-width: functions.rem(480);
+  margin: functions.rem(32) auto;
+}
+
+// Clases utilitarias generadas con @for (loop)
+@for $i from 1 through 4 {
+  .space-#{$i} { margin-top: functions.rem($i * 8); }
+}

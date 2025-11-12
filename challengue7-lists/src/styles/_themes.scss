@@ -1,0 +1,30 @@
+@use "./variables" as *;  // <— ADDED
+
+$themes: (
+  light: (
+    bg: map-get($palette, bg),
+    ink: map-get($palette, ink),
+    paper: map-get($palette, paper),
+    text: map-get($palette, text),
+    primary: map-get($palette, primary),
+    primary-strong: map-get($palette, primary-strong)
+  ),
+  dark: (
+    bg: #0f172a,
+    ink: #e2e8f0,
+    paper: #111827,
+    text: #e5e7eb,
+    primary: #60a5fa,
+    primary-strong: #3b82f6
+  )
+);
+
+@each $name, $tokens in $themes {
+  [data-theme="#{$name}"] {
+    @each $k, $v in $tokens {
+      --#{$k}: #{$v};
+    }
+    background: var(--bg);
+    color: var(--text);
+  }
+}

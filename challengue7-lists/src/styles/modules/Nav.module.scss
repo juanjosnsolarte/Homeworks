@@ -1,0 +1,28 @@
+@use '../../styles/variables';
+@use '../../styles/mixins';
+@use '../../styles/functions';
+
+.nav {
+  background: var(--ink);
+  padding: functions.rem(16) functions.rem(8);
+  margin-bottom: functions.rem(24);
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: functions.rem(24);
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    a,
+    .themeBtn {               
+      font-weight: 800;
+      text-decoration: none;
+      @include mixins.button-base;
+      @include mixins.button-variant(var(--primary), var(--ink));
+      padding: functions.rem(8) functions.rem(14);
+      font-size: 1rem;
+    }
+  }
+}

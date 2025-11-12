@@ -1,0 +1,34 @@
+@use "sass:math";
+@use "./variables" as *;  // <— ADDED
+
+@mixin card($pad: 2rem) {
+  background: map-get($palette, paper);
+  border-radius: $radius-lg;
+  box-shadow: $shadow-soft;
+  padding: $pad;
+}
+
+@mixin button-base {
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.06s ease-in-out;
+
+  &:active { transform: scale(0.98); }
+  &:disabled {
+    background: map-get($palette, disabled);
+    color: #fff;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-variant($bg, $fg: map-get($palette, ink)) {
+  background: $bg;
+  color: $fg;
+
+  &:not(:disabled):hover {
+    background: readable-shade($bg, 10%);
+    color: #fff;
+  }
+}

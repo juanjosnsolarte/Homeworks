@@ -1,0 +1,36 @@
+@use '../../styles/placeholders';
+@use '../../styles/mixins';
+@use '../../styles/functions';
+
+.title {
+  @extend %title;
+  font-size: functions.rem(24);
+}
+
+.url {
+  @extend %muted;
+  word-break: break-all;
+}
+
+.actions {
+  display: flex;
+  gap: functions.rem(12);
+}
+
+.button {
+  @include mixins.button-base;
+  @include mixins.button-variant(var(--primary), var(--ink));
+
+  // variantes con @each
+  $variants: (
+    secondary: var(--primary-strong),
+    ghost: transparent
+  );
+
+  @each $name, $bg in $variants {
+    &--#{$name} {
+      @include mixins.button-variant($bg, var(--ink));
+      border: if($bg == transparent, 1px solid var(--primary), none);
+    }
+  }
+}

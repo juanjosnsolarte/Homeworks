@@ -1,0 +1,12 @@
+@use "./variables" as *;  // <— ADDED
+
+%title {
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #1a237e;
+}
+
+%muted {
+  color: map-get($palette, text-muted);
+  margin-bottom: 1.25rem;
+}

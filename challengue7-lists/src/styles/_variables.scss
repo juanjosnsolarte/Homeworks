@@ -1,0 +1,23 @@
+// Escalas
+$radius-lg: 16px;
+$shadow-soft: 0 4px 24px rgba(40,44,52,0.08);
+$font-stack: 'Segoe UI', Arial, sans-serif;
+
+// Paletas (map)
+$palette: (
+  primary: #61dafb,
+  primary-strong: #21a1f3,
+  ink: #282c34,
+  paper: #ffffff,
+  text: #222222,
+  text-muted: #555555,
+  disabled: #b0bec5,
+  bg: #f6f8fa
+);
+
+// Tamaños de botón (map)
+$btn-sizes: (
+  sm: (py: 0.35rem, px: 0.75rem, fs: 0.9rem),
+  md: (py: 0.6rem,  px: 1.2rem,  fs: 1rem),
+  lg: (py: 0.8rem,  px: 1.4rem,  fs: 1.1rem)
+);

@@ -1,0 +1,19 @@
+@use '../../styles/placeholders';
+@use '../../styles/mixins';
+@use '../../styles/functions';
+@use '../../styles/variables';
+
+.title { @extend %title; font-size: functions.rem(24); }
+.artist { @extend %muted; }
+
+.actions { display: flex; gap: functions.rem(12); }
+
+// Genera tamaños de botón con loop sobre map ($btn-sizes)
+@each $size, $cfg in variables.$btn-sizes {
+  .btn-#{$size} {
+    @include mixins.button-base;
+    @include mixins.button-variant(var(--primary), var(--ink));
+    padding: map-get($cfg, py) map-get($cfg, px);
+    font-size: map-get($cfg, fs);
+  }
+}

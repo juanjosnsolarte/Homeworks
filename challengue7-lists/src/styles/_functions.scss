@@ -1,0 +1,18 @@
+@use "sass:math";
+@use "sass:color";
+@use "./variables" as *;  // <— ADDED
+
+@function rem($px) {
+  @return math.div($px, 16) * 1rem;
+}
+
+@function readable-shade($base, $amount: 8%) {
+  @return if(color.contrast($base, #000) > color.contrast($base, #fff),
+    color.scale($base, $lightness: -$amount),
+    color.scale($base, $lightness: +$amount)
+  );
+}
+
+@function color-get($key) {
+  @return map-get($palette, $key);
+}
