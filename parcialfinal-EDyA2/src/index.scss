@@ -1,0 +1,331 @@
+$bg-body: #f1f5f9;        
+$bg-header: #064e3b;      
+$bg-panel: #ffffff;       
+$border-soft: #e5e7eb;
+$accent: #16a34a;         
+$accent-strong: #15803d;  
+$accent-soft: #bbf7d0;    
+$text-main: #022c22;      
+$text-muted: #6b7280;
+$danger: #ef4444;
+$danger-dark: #b91c1c;
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+#root {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: $bg-body;
+  color: $text-main;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, $accent, $accent-strong);
+  color: #ffffff;
+  box-shadow: 0 20px 40px rgba(22, 163, 74, 0.35);
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+  }
+
+  p {
+    margin: 0.4rem 0 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+  }
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 1.05fr 1.5fr;
+  gap: 1.5rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $bg-header;
+  }
+}
+
+.card {
+  background: $bg-panel;
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid $border-soft;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.header-card {
+  border-left: 4px solid $accent;
+  h3 {
+    margin: 0 0 0.75rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.85rem;
+    color: $text-muted;
+  }
+
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+input,
+select {
+  border-radius: 0.6rem;
+  border: 1px solid $border-soft;
+  background-color: #f9fafb;
+  color: $text-main;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $accent;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.3);
+  }
+}
+
+button {
+  border-radius: 999px;
+  border: none;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, $accent, $accent-strong);
+  color: #ecfdf5;
+  transition: transform 0.1s ease, box-shadow 0.1s ease,
+    filter 0.1s ease;
+
+  &:hover {
+    filter: brightness(1.03);
+    box-shadow: 0 10px 20px rgba(22, 163, 74, 0.4);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+.danger-btn {
+  background: linear-gradient(135deg, $danger, $danger-dark);
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+}
+
+.city-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.city-item {
+  padding-bottom: 0.45rem;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.5);
+}
+
+.city-name-btn {
+  background: #ffffff;
+  border-radius: 999px;
+  border: 1px solid $border-soft;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.9rem;
+  color: $bg-header;
+
+  &--active {
+    background: $accent-soft;
+    border-color: $accent;
+    color: $bg-header;
+  }
+}
+
+.city-neighbors {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: $text-muted;
+
+  span:first-child {
+    font-weight: 600;
+    color: $text-main;
+  }
+}
+
+.city-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.stats-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background-color: #f9fafb;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.9rem;
+  border: 1px solid $border-soft;
+  min-width: 130px;
+
+  .stat-label {
+    display: block;
+    font-size: 0.7rem;
+    color: $text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $bg-header;
+  }
+}
+
+.tree {
+  list-style: none;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.tree-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background-color: #ecfdf5;
+  border: 1px solid $accent-soft;
+  font-size: 0.85rem;
+}
+
+  .tree-node-id {
+    font-size: 0.7rem;
+    color: $text-muted;
+  }
+
+  .tree-node-name {
+    font-weight: 600;
+    color: $bg-header;
+  }
+
+.empty-state {
+  font-size: 0.9rem;
+  color: $text-muted;
+}
+
+.graph-section {
+  margin-top: 1.8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.graph-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 100%;
+  max-width: 900px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: $bg-header;
+  }
+
+  .graph-hint {
+    margin: 0;
+    font-size: 0.8rem;
+    color: $text-muted;
+  }
+}
+
+.graph-3d-wrapper {
+  width: 100%;
+  height: 320px; // aquí defines el alto que quieras
+  margin-top: 0.4rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.9rem;
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.25);
+}
+
+.tree,
+.tree ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 1rem;
+}
+
+// Tabs de zonas principales
+.zone-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.zone-tab {
+  border-radius: 999px;
+  border: 1px solid $border-soft;
+  background-color: #f9fafb;
+  padding: 0.25rem 0.9rem;
+  font-size: 0.85rem;
+  color: $bg-header;
+  cursor: pointer;
+
+  &--active {
+    border-color: $accent;
+    background-color: $accent-soft;
+    color: $bg-header;
+    font-weight: 600;
+  }
+}
+
+.zone-tree-wrapper {
+  margin-top: 0.5rem;
+}
